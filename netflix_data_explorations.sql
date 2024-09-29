@@ -48,13 +48,18 @@ WHERE Category = 'International TV Shows'
 GROUP BY YEAR(yr.date_added_modified), Category
 ORDER BY cnt DESC
 
--- By Rating 
-SELECT info.rating, COUNT(rating) as cnt
-FROM titles_casts as title
-JOIN information as info on title.show_id = info.show_id 
-WHERE rating is not NULL AND rating <> ''
+-- By Rating using CTE
+WITH RatedTitles AS (
+    SELECT info.rating
+    FROM titles_casts AS title
+    JOIN information AS info ON title.show_id = info.show_id
+    WHERE info.rating IS NOT NULL AND info.rating <> ''
+)
+
+SELECT rating, COUNT(rating) AS cnt
+FROM RatedTitles
 GROUP BY rating
-ORDER BY cnt DESC
+ORDER BY cnt DESC;
 
 -- top 10 PG-13 directors by rating and type
 SELECT t.director, COUNT(*) as cnt
