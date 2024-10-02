@@ -1,3 +1,10 @@
+-- Technologies Used
+-- **SQL Server**: For database management and query execution.
+-- **T-SQL**: Used for writing queries and stored procedures.
+
+-- Dataset Description
+-- This portfolio contains analyses based on the **Hospital General Information** dataset sourced from the [Centers for Medicare & Medicaid Services (CMS)](https://data.cms.gov/). The dataset includes information on hospitals across the United States, including their overall ratings, ownership types, and service availability.
+
 SELECT * FROM [Hospital General Information]
 
 -- Delete nulls of rating
